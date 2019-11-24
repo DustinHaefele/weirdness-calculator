@@ -1,0 +1,9 @@
+.gifDisplay {
+  width: 50%;
+  align-items: center;
+  padding: 25px 25px;
+}
+
+.gifTitle{
+  width: 100%;
+}
