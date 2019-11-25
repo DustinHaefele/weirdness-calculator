@@ -1,10 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import GiphyApiService from '../../services/giphy-api-service';
 import Slider from '@material-ui/core/Slider';
-import './Slider.css'
+import { setCurrentGif } from '../../redux/actions';
+import './Slider.css';
 
-export default function WeirdnessSlider() {
+const WeirdnessSlider = ({ dispatch }) => {
 
   function valueText(value)  { return `Weirdness value: ${value}`}
   
@@ -18,6 +21,16 @@ export default function WeirdnessSlider() {
         getAriaValueText={valueText}
         aria-labelledby="discrete-slider"
         valueLabelDisplay="auto"
+        onChangeCommitted={(ev, value) => {
+          ev.preventDefault();
+          const searchTerm = 'puppies';
+          if (!searchTerm.trim()) {
+            return;
+          }
+          return GiphyApiService.getGifFromSearch(searchTerm, value).then(gif =>{
+            dispatch(setCurrentGif(gif.data))
+          });
+        }}
         step={1}
         marks
         min={0}
@@ -26,3 +39,5 @@ export default function WeirdnessSlider() {
     </div>
   );
 }
+
+export default connect()(WeirdnessSlider)
