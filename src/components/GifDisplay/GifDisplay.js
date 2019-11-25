@@ -1,12 +1,22 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToFavorites } from '../../redux/actions';
 import './GifDisplay.css';
 
-const GifDisplay = ({ gif, liked, dispatch }) => {
+const GifDisplay = ({ gif, liked, dispatch}) => {
   
-  const url = gif.images.original.url;
-  const title = gif.title;
+  const history = useHistory();
+  
+  if(!gif.images) {
+    history.push('/');
+    return <></>;
+  }
+
+  const url = gif.images.original.url || '';
+  const title = gif.title || '';
+
+  
   
   return (
     (<div className='gifDisplay'>
