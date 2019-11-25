@@ -5,6 +5,7 @@ import { setCurrentGif } from '../../redux/actions';
 import GiphyApiService from '../../services/giphy-api-service';
 
 const SearchSection = ({ dispatch }) => {
+  
   const history = useHistory();
   
   return (
