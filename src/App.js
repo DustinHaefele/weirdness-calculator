@@ -1,15 +1,18 @@
 import React from 'react';
+import { Switch, Route} from 'react-router-dom'
 import './App.css';
 import Header from './components/Header/Header';
-import SearchSection from './components/SearchSection/SearchSection';
-import CurrentGif from './containers/CurrentGif/CurrentGif';
+import LandingPage from './routes/LandingPage/LandingPage';
+import GifPage from './routes/GifPage/GifPage';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <SearchSection />
-      <CurrentGif />
+      <Switch> 
+        <Route exact path='/'component={LandingPage} />
+        <Route path='/gifs' component={GifPage} />
+      </Switch>
     </div>
   );
 }

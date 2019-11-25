@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { setCurrentGif } from '../../redux/actions';
 import GiphyApiService from '../../services/giphy-api-service';
 
 const SearchSection = ({ dispatch }) => {
+  const history = useHistory();
+  
   return (
     <section>
       <p>
@@ -23,9 +26,10 @@ const SearchSection = ({ dispatch }) => {
           if (!searchTerm.trim()) {
             return;
           }
-          return GiphyApiService.getGifFromSearch(searchTerm).then(gif =>
+          return GiphyApiService.getGifFromSearch(searchTerm).then(gif =>{
             dispatch(setCurrentGif(gif.data))
-          );
+            history.push('/gifs')
+          });
         }}
       >
         <label htmlFor="search">Search Term</label>
