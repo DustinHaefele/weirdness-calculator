@@ -6,7 +6,7 @@ import Slider from '@material-ui/core/Slider';
 import { setCurrentGif } from '../../redux/actions';
 import './Slider.css';
 
-const WeirdnessSlider = ({ dispatch }) => {
+const WeirdnessSlider = ({searchTerm, dispatch }) => {
 
   function valueText(value)  { return `Weirdness value: ${value}`}
   
@@ -23,7 +23,6 @@ const WeirdnessSlider = ({ dispatch }) => {
         onChangeCommitted={(ev, value) => {
           ev.preventDefault();
           //need to save search term and access it again here
-          const searchTerm = 'chicken';
           if (!searchTerm.trim()) {
             return;
           }

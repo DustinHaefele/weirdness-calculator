@@ -26,7 +26,7 @@ const GifDisplay = ({ gif, liked, dispatch}) => {
       {(!liked) && <button onClick={() => {
         dispatch(addToFavorites(gif))
       }}>LIKE ME</button>}
-      <WeirdnessSlider />
+      <WeirdnessSlider searchTerm={gif.searchTerm}/>
     </div>) 
   )
 }
