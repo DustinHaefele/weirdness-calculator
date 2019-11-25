@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import GiphyApiService from '../../services/giphy-api-service';
 import Slider from '@material-ui/core/Slider';
@@ -23,12 +22,13 @@ const WeirdnessSlider = ({ dispatch }) => {
         valueLabelDisplay="auto"
         onChangeCommitted={(ev, value) => {
           ev.preventDefault();
-          const searchTerm = 'puppies';
+          //need to save search term and access it again here
+          const searchTerm = 'chicken';
           if (!searchTerm.trim()) {
             return;
           }
           return GiphyApiService.getGifFromSearch(searchTerm, value).then(gif =>{
-            dispatch(setCurrentGif(gif.data))
+            dispatch(setCurrentGif(gif))
           });
         }}
         step={1}

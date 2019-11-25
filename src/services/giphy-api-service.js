@@ -10,7 +10,7 @@ const GiphyApiService = {
       }
     ).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    );
+    ).then(gif => {return {searchTerm, weirdness, ...gif.data}})
   },
 };
 
