@@ -28,7 +28,7 @@ const SearchSection = ({ dispatch }) => {
             return;
           }
           return GiphyApiService.getGifFromSearch(searchTerm).then(gif =>{
-            dispatch(setCurrentGif(gif.data))
+            dispatch(setCurrentGif(gif))
             history.push('/gifs')
           });
         }}

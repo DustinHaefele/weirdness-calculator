@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToFavorites } from '../../redux/actions';
+import WeirdnessSlider from '../Slider/Slider';
 import './GifDisplay.css';
 
 const GifDisplay = ({ gif, liked, dispatch}) => {
@@ -24,7 +25,8 @@ const GifDisplay = ({ gif, liked, dispatch}) => {
       <img src={url} alt={title}/>
       {(!liked) && <button onClick={() => {
         dispatch(addToFavorites(gif))
-      }}>LIKE ME</button>} 
+      }}>LIKE ME</button>}
+      <WeirdnessSlider searchTerm={gif.searchTerm}/>
     </div>) 
   )
 }
