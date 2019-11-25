@@ -1,7 +1,8 @@
-import config from './config';
+import config from '../config';
 
 const GiphyApiService = {
-  getGifFromSearch(searchTerm, weirdness) {
+  getGifFromSearch(searchTerm, weirdness =0) {
+
     return fetch(
       `${config.API_ENDPOINT}?api_key=${config.API_KEY}&s=${searchTerm}&weirdness=${weirdness}`,
       {
