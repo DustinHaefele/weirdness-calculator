@@ -5,7 +5,7 @@ import { addToFavorites } from '../../redux/actions';
 import WeirdnessSlider from '../Slider/Slider';
 import './GifDisplay.css';
 
-const GifDisplay = ({ gif, liked, dispatch}) => {
+const GifDisplay = ({ gif, dispatch}) => {
   
   const history = useHistory();
   
@@ -23,12 +23,9 @@ const GifDisplay = ({ gif, liked, dispatch}) => {
     (<div className='gifDisplay'>
       <h3 className='gifTitle'>{title}</h3>
       <img src={url} alt={title}/>
-      {(!liked) && <button onClick={() => {
-        dispatch(addToFavorites(gif))
-      }}>LIKE ME</button>}
-      <WeirdnessSlider searchTerm={gif.searchTerm}/>
     </div>) 
   )
 }
+
 
 export default connect()(GifDisplay)
