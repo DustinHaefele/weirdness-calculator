@@ -13,10 +13,10 @@ const WeirdnessSlider = ({searchTerm, error, dispatch }) => {
   
   return (
     <div className='sliderDiv'>
+      {error.type === 'slider' && <p className='error'>{error.message}</p> }
       <Typography id="discrete-slider" gutterBottom>
         Weirdness
       </Typography>
-      {error.type === 'slider' && <p className='error'>{error.message}</p> }
       <Slider
         defaultValue={0}
         getAriaValueText={valueText}
@@ -29,7 +29,7 @@ const WeirdnessSlider = ({searchTerm, error, dispatch }) => {
             return;
           }
           return GiphyApiService.getGifFromSearch(searchTerm, value).then(gif =>{
-            dispatch(batchActions([setCurrentGif(gif), setError({type: ''})]));
+            dispatch(batchActions([setCurrentGif(gif), setError({})]));
           }).catch(()=> dispatch(setError({type: 'slider', message: 'Oops, something went wrong.  Give it another try'})))
         }}
         step={1}

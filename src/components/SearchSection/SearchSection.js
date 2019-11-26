@@ -36,13 +36,13 @@ const SearchSection = ({ favorites, error, dispatch }) => {
             return
           }
           return GiphyApiService.getGifFromSearch(searchTerm).then(gif => {
-            dispatch(batchActions([setCurrentGif(gif), setError({type: ''})]));
+            dispatch(batchActions([setCurrentGif(gif), setError({})]));
             history.push('/gifs');
           }).catch(() => dispatch(setError({type:'search', message: "Oops! Something went wrong.  Try Searching again.  If the problem persists refresh the page!"})))
         }}
       >
-        <label htmlFor="search">Search Term</label>
         {error.type === 'search' && <p className='error'>{error.message}</p> }
+        <label htmlFor="search">Search Term: </label>
         <input name="search" id="search" />
         <button type="submit">Search</button>
       </form>

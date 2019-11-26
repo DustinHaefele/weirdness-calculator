@@ -1,4 +1,4 @@
-const error = (state = {type: ''}, action) => {
+const error = (state = {}, action) => {
   switch (action.type) {
     case 'SET_ERROR':
       return action.error;
