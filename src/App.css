@@ -20,3 +20,25 @@
 .App-link {
   color: #09d3ac;
 }
+
+/* FLEXBOX classes */
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-around;
+}
+
+._50 {
+  justify-content: center;
+  width: 40%;
+  margin: 0 0 15px 0;
+}
