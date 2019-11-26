@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { setCurrentGif } from '../../redux/actions';
+import { batchActions } from 'redux-batched-actions';
+import { setCurrentGif, setError } from '../../redux/actions';
 import GiphyApiService from '../../services/giphy-api-service';
 
-const SearchSection = ({ dispatch }) => {
-  
+const SearchSection = ({ favorites, error, dispatch }) => {
   const history = useHistory();
-  
+
   return (
     <section>
       <p>
@@ -23,17 +23,26 @@ const SearchSection = ({ dispatch }) => {
       <form
         onSubmit={ev => {
           ev.preventDefault();
+
           const searchTerm = ev.target.search.value;
-          if (!searchTerm.trim()) {
-            return;
-          }
-          return GiphyApiService.getGifFromSearch(searchTerm).then(gif =>{
-            dispatch(setCurrentGif(gif))
-            history.push('/gifs')
+          const searchTermInFavorites = favorites.some(fav => {
+            return fav.gif.searchTerm === searchTerm;
           });
+          if (!searchTerm.trim()) {
+            dispatch(setError({type: 'search', message: 'Please enter a search term'}))
+            return;
+          } else if (searchTermInFavorites) {
+            dispatch(setError({type: 'search', message: 'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the gif with this search term from favorites and try again'}))
+            return
+          }
+          return GiphyApiService.getGifFromSearch(searchTerm).then(gif => {
+            dispatch(batchActions([setCurrentGif(gif), setError({})]));
+            history.push('/gifs');
+          }).catch(() => dispatch(setError({type:'search', message: "Oops! Something went wrong.  Try Searching again.  If the problem persists refresh the page!"})))
         }}
       >
-        <label htmlFor="search">Search Term</label>
+        {error.type === 'search' && <p className='error'>{error.message}</p> }
+        <label htmlFor="search">Search Term: </label>
         <input name="search" id="search" />
         <button type="submit">Search</button>
       </form>

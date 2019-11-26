@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './GifDisplay.css';
 
-const GifDisplay = ({ gif, size, dispatch}) => {
+const GifDisplay = ({ gif }) => {
   
   const history = useHistory();
   
@@ -13,7 +13,7 @@ const GifDisplay = ({ gif, size, dispatch}) => {
   }
 
   const url =  gif.images.downsized_large.url || ''
-  const title = gif.title || '';
+  const title = `${gif.searchTerm}: ${gif.title}` || '';
 
   
   
