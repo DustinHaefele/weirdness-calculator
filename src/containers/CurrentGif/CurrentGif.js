@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
-import GifDisplay from '../../components/GifDisplay/GifDisplay';
+import CurrentGifDisplay from '../../components/CurrentGifDisplay/CurrentGifDisplay';
 
 const mapStateToProps = state => ({
-  gif: state.currentGif
+  gif: state.currentGif,
+  favorites: state.favorites,
+  error: state.error
 })
 
-export default connect(mapStateToProps)(GifDisplay)
+export default connect(mapStateToProps)(CurrentGifDisplay)
