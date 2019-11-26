@@ -4,10 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { setCurrentGif } from '../../redux/actions';
 import GiphyApiService from '../../services/giphy-api-service';
 
-const SearchSection = ({ dispatch }) => {
-  
+const SearchSection = ({ favorites, dispatch }) => {
   const history = useHistory();
-  
+
   return (
     <section>
       <p>
@@ -23,13 +22,21 @@ const SearchSection = ({ dispatch }) => {
       <form
         onSubmit={ev => {
           ev.preventDefault();
+
           const searchTerm = ev.target.search.value;
+          const searchTermInFavorites = favorites.some(fav => {
+            return fav.gif.searchTerm === searchTerm;
+          });
           if (!searchTerm.trim()) {
+            console.log('no search term')
             return;
+          } else if (searchTermInFavorites) {
+            console.log(`${searchTermInFavorites} is already in favorites`)
+            return
           }
-          return GiphyApiService.getGifFromSearch(searchTerm).then(gif =>{
-            dispatch(setCurrentGif(gif))
-            history.push('/gifs')
+          return GiphyApiService.getGifFromSearch(searchTerm).then(gif => {
+            dispatch(setCurrentGif(gif));
+            history.push('/gifs');
           });
         }}
       >

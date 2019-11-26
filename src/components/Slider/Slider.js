@@ -22,12 +22,12 @@ const WeirdnessSlider = ({searchTerm, dispatch }) => {
         valueLabelDisplay="auto"
         onChangeCommitted={(ev, value) => {
           ev.preventDefault();
-          //need to save search term and access it again here
+
           if (!searchTerm.trim()) {
             return;
           }
           return GiphyApiService.getGifFromSearch(searchTerm, value).then(gif =>{
-            dispatch(setCurrentGif(gif))
+            dispatch(setCurrentGif(gif));
           });
         }}
         step={1}
