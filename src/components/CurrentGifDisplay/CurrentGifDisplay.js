@@ -3,9 +3,10 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToFavorites } from '../../redux/actions';
 import WeirdnessSlider from '../Slider/Slider';
+import GifDisplay from '../GifDisplay/GifDisplay';
 
 
-const GifDisplay = ({ gif, dispatch }) => {
+const CurrentGifDisplay = ({ gif, dispatch }) => {
   const history = useHistory();
 
   if (!gif.images) {
@@ -13,13 +14,9 @@ const GifDisplay = ({ gif, dispatch }) => {
     return <></>;
   }
 
-  const url = gif.images.original.url || '';
-  const title = gif.title || '';
-
   return (
-    <div className="gifDisplay">
-      <h3 className="gifTitle">{title}</h3>
-      <img src={url} alt={title} />
+    <div className="currentGifDisplay">
+      <GifDisplay gif={gif}/>
       <button
         onClick={() => {
           dispatch(addToFavorites(gif));
@@ -32,4 +29,4 @@ const GifDisplay = ({ gif, dispatch }) => {
   );
 };
 
-export default connect()(GifDisplay);
+export default connect()(CurrentGifDisplay);

@@ -1,11 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addToFavorites } from '../../redux/actions';
-import WeirdnessSlider from '../Slider/Slider';
 import './GifDisplay.css';
 
-const GifDisplay = ({ gif, dispatch}) => {
+const GifDisplay = ({ gif, size, dispatch}) => {
   
   const history = useHistory();
   
@@ -14,7 +12,7 @@ const GifDisplay = ({ gif, dispatch}) => {
     return <></>;
   }
 
-  const url = gif.images.original.url || '';
+  const url =  gif.images.downsized_large.url || ''
   const title = gif.title || '';
 
   
