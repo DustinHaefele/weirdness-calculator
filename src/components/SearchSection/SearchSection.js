@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { setCurrentGif } from '../../redux/actions';
+import { batchActions } from 'redux-batched-actions';
+import { setCurrentGif, setError } from '../../redux/actions';
 import GiphyApiService from '../../services/giphy-api-service';
 
-const SearchSection = ({ favorites, dispatch }) => {
+const SearchSection = ({ favorites, error, dispatch }) => {
   const history = useHistory();
 
   return (
@@ -28,19 +29,20 @@ const SearchSection = ({ favorites, dispatch }) => {
             return fav.gif.searchTerm === searchTerm;
           });
           if (!searchTerm.trim()) {
-            console.log('no search term')
+            dispatch(setError({type: 'search', message: 'Please enter a search term'}))
             return;
           } else if (searchTermInFavorites) {
-            console.log(`${searchTermInFavorites} is already in favorites`)
+            dispatch(setError({type: 'search', message: 'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the gif with this search term from favorites and try again'}))
             return
           }
           return GiphyApiService.getGifFromSearch(searchTerm).then(gif => {
-            dispatch(setCurrentGif(gif));
+            dispatch(batchActions([setCurrentGif(gif), setError({type: ''})]));
             history.push('/gifs');
-          });
+          }).catch(() => dispatch(setError({type:'search', message: "Oops! Something went wrong.  Try Searching again.  If the problem persists refresh the page!"})))
         }}
       >
         <label htmlFor="search">Search Term</label>
+        {error.type === 'search' && <p className='error'>{error.message}</p> }
         <input name="search" id="search" />
         <button type="submit">Search</button>
       </form>

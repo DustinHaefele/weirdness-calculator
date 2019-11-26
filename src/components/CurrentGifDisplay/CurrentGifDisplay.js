@@ -5,7 +5,7 @@ import { addToFavorites, setCurrentGif } from '../../redux/actions';
 import WeirdnessSlider from '../Slider/Slider';
 import GifDisplay from '../GifDisplay/GifDisplay';
 
-const CurrentGifDisplay = ({ gif, dispatch }) => {
+const CurrentGifDisplay = ({ gif, error, dispatch }) => {
   return gif.images ? (
     <div className="currentGifDisplay">
       <h2>YOUR SEARCH RESULTS</h2>
@@ -17,7 +17,7 @@ const CurrentGifDisplay = ({ gif, dispatch }) => {
       >
         LIKE ME
       </button>
-      <WeirdnessSlider searchTerm={gif.searchTerm} />
+      <WeirdnessSlider searchTerm={gif.searchTerm} error={error} />
     </div>
   ) : (
     <div className="currentGifDisplay">

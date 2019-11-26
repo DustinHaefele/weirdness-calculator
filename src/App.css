@@ -42,3 +42,8 @@
   width: 40%;
   margin: 0 0 15px 0;
 }
+
+.error {
+  color: red;
+  font-size: 14px;
+}

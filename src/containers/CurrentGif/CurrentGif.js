@@ -3,7 +3,8 @@ import CurrentGifDisplay from '../../components/CurrentGifDisplay/CurrentGifDisp
 
 const mapStateToProps = state => ({
   gif: state.currentGif,
-  favorites: state.favorites
+  favorites: state.favorites,
+  error: state.error
 })
 
 export default connect(mapStateToProps)(CurrentGifDisplay)
