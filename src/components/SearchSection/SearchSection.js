@@ -23,7 +23,7 @@ const SearchSection = ({ favorites, error, dispatch }) => {
       <form
         onSubmit={ev => {
           ev.preventDefault();
-
+          dispatch(setCurrentGif({}));
           const searchTerm = ev.target.search.value;
           const searchTermInFavorites = favorites.some(fav => {
             return fav.gif.searchTerm === searchTerm;
