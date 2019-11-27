@@ -8,3 +8,19 @@
   width: 100%;
 }
 
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
