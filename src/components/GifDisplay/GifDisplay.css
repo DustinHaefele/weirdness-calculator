@@ -1,10 +1,10 @@
 .gifDisplay {
   width: 100%;
   align-items: center;
-  padding: 25px 25px;
 }
 
 .gifTitle {
+  font-size: 24px;
   width: 100%;
 }
 

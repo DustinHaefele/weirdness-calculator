@@ -16,7 +16,6 @@ export default function Favorites({ favorites, dispatch }) {
 
   return (
     <div>
-      <h2>YOUR LIKED GIFS</h2>
       {(favorites.length > 0) ? displayFavorites() 
       : <p>When you add gifs to your favorites they will be displayed here</p>}
     </div>

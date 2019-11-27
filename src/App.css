@@ -34,13 +34,21 @@
   display: flex;
   flex-direction: column;
   align-content: space-around;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-._50 {
+._40 {
   justify-content: center;
   width: 40%;
-  margin: 0 0 15px 0;
+  /* margin: 0 0 15px 0; */
+}
+
+._60 {
+  width: 60%;
+}
+
+._100 {
+  width: 100%;
 }
 
 .error {
