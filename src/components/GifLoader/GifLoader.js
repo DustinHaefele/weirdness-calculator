@@ -1,6 +1,6 @@
 import React from 'react';
 // import Lottie from 'react-lottie';
-import Lottie from 'lottie-react-web';
+import Lottie from 'react-lottie';
 import GifLoader from '../../images/gif-loading.json';
 import './GifLoader.css';
 

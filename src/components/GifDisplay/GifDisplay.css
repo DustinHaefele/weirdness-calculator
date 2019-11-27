@@ -1,10 +1,26 @@
 .gifDisplay {
   width: 100%;
   align-items: center;
-  padding: 25px 25px;
 }
 
 .gifTitle {
+  font-size: 24px;
   width: 100%;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
