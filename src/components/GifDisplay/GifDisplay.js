@@ -20,9 +20,10 @@ const GifDisplay = ({ gif }) => {
   const title = `${gif.searchTerm}: ${gif.title}` || '';
 
   return (
-    <div className="gifDisplay">
+    <div className='_40 around'>
+      {/*  className="gifDisplay" */}
       <h3 className="gifTitle">{title}</h3>
-      <div className="imgDiv">
+      {/* <div className="imgDiv"> */}
       <ImageLoader
         placeholder='../../../2705-image-loading.gif'
         image={url}
@@ -30,7 +31,7 @@ const GifDisplay = ({ gif }) => {
         renderLoading={() => (<GifLoader />)}
         renderError={() => (<text>Failed to load your gif, please try again </text>)}
     />
-      </div>
+      {/* </div> */}
     </div>
   );
 };

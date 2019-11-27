@@ -43,6 +43,10 @@
   /* margin: 0 0 15px 0; */
 }
 
+.around {
+  justify-content: space-around;
+}
+
 ._60 {
   width: 60%;
 }
