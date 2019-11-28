@@ -1,5 +1,6 @@
 import React from 'react';
-import { removeFromFavorites } from '../../redux/actions';
+import { removeFromFavorites, setError } from '../../redux/actions';
+import { batchActions } from 'redux-batched-actions';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +16,7 @@ const GifDisplay = ({ gif, isFavorite, dispatch }) => {
   }
 
   function handleRemove(id) {
-    dispatch(removeFromFavorites(id));
+    dispatch(batchActions([removeFromFavorites(id), setError({})]));
   }
 
   const url = gif.images.fixed_width.url || '';
