@@ -8,7 +8,7 @@ export default function GifPage() {
   return (
     <div className="row">
 
-        <div className="_55 vh">
+        <div className="_55 vh column">
           <SearchContainer />
           <CurrentGif />
         </div>

@@ -1,7 +1,9 @@
 .gifDisplay {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 30px 0;
 }
 
 .gifTitle {
@@ -12,7 +14,7 @@
 .wrapper {
   position: relative;
   display: inline-block;
-  max-width: 200px;
+
 }
 
 .remove {

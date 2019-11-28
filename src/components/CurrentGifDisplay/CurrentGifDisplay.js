@@ -1,12 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { batchActions } from 'redux-batched-actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { addToFavorites, setCurrentGif } from '../../redux/actions';
 import WeirdnessSlider from '../Slider/Slider';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './CurrentGifDisplay.css';
 
 const CurrentGifDisplay = ({ gif, error, dispatch }) => {
+  
+  function handleAddToFavorites() {
+    dispatch(batchActions([addToFavorites(gif), setCurrentGif({})]));
+  }
+  
   return gif.images ? (
     <section className='currentGifSection'>
       <h2 className='sectionTitle'>YOUR SEARCH RESULTS</h2>
@@ -14,11 +21,9 @@ const CurrentGifDisplay = ({ gif, error, dispatch }) => {
         <GifDisplay gif={gif} />
       </div>
       <button
-        onClick={() => {
-          dispatch(batchActions([addToFavorites(gif), setCurrentGif({})]));
-        }}
+        onClick={() => handleAddToFavorites()}
       >
-        LIKE ME
+        <FontAwesomeIcon icon={faThumbsUp} className='thumbsUp'/>
       </button>
       <WeirdnessSlider searchTerm={gif.searchTerm} error={error} />
     </section>
