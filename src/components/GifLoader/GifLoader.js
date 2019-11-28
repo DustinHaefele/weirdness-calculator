@@ -1,21 +1,23 @@
 import React from 'react';
 // import Lottie from 'react-lottie';
 import Lottie from 'react-lottie';
-import GifLoader from '../../images/gif-loading.json';
+import LoadingGif from '../../images/gif-loading.json';
 import './GifLoader.css';
 
-export default function Spinner () {
+export default function GifLoader ({ isFavorite }) {
+
+  const isHidden = isFavorite ? 'hidden' : '';
 
   const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: GifLoader,
+        animationData: LoadingGif,
       };
   
     return (
-      <div className='spinner-div' >
+      <div className='loader-div' >
         <Lottie className='lottie-player' options={defaultOptions}/>
-        <p>Loading Gif...</p>
+        <p className={isHidden}>Loading Gif...</p>
       </div>
     )
   }

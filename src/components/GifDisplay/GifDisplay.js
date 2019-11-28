@@ -8,7 +8,7 @@ import ImageLoader from 'rc-image-loader';
 import GifLoader from '../GifLoader/GifLoader';
 
 
-const GifDisplay = ({ gif, isFavorite = false, dispatch }) => {
+const GifDisplay = ({ gif, isFavorite, dispatch }) => {
 
   if (!gif.images) {
     return <></>;
@@ -31,13 +31,12 @@ const GifDisplay = ({ gif, isFavorite = false, dispatch }) => {
         placeholder="../../../2705-image-loading.gif"
         image={url}
         renderComponent={({ src }) => <img src={src} alt={title} />}
-        renderLoading={() => <GifLoader />}
+        renderLoading={() => <GifLoader isFavorite={isFavorite}/>}
         renderError={() => (
           <text>Failed to load your gif, please try again </text>
         )}
       />
       <FontAwesomeIcon icon={faTimesCircle} className={remove} onClick={()=>handleRemove(gif.id)} />
-      {/* <span className={remove} onClick={()=>handleRemove(gif.id)}>X</span> */}
       </div>
     </div>
   );

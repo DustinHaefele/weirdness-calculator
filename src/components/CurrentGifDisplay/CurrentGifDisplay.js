@@ -20,7 +20,7 @@ const CurrentGifDisplay = ({ gif, error, dispatch }) => {
     <section className="currentGifSection">
       <h2 className="sectionTitle">YOUR SEARCH RESULTS</h2>
       <div className="currentGifDisplay">
-        <GifDisplay gif={gif} />
+        <GifDisplay gif={gif} isFavorite={false}/>
       </div>
       <button className="likeButton" onClick={() => handleAddToFavorites()}>
         <FontAwesomeIcon icon={faThumbsUp} className="thumbsUp" />
