@@ -15,7 +15,7 @@ export default function Spinner () {
     return (
       <div className='spinner-div' >
         <Lottie className='lottie-player' options={defaultOptions}/>
-        <p>Gif Loading...</p>
+        <p>Loading Gif...</p>
       </div>
     )
   }

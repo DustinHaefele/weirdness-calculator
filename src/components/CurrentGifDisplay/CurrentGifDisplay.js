@@ -23,7 +23,7 @@ const CurrentGifDisplay = ({ gif, error, dispatch }) => {
         <GifDisplay gif={gif} />
       </div>
       <button className="likeButton" onClick={() => handleAddToFavorites()}>
-        <FontAwesomeIcon icon={faThumbsUp} className="icon" />
+        <FontAwesomeIcon icon={faThumbsUp} className="thumbsUp" />
       </button>
       <WeirdnessSlider searchTerm={gif.searchTerm} error={error} />
     </section>

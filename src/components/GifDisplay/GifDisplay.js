@@ -1,9 +1,12 @@
 import React from 'react';
 import { removeFromFavorites } from '../../redux/actions';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import './GifDisplay.css';
 import ImageLoader from 'rc-image-loader';
 import GifLoader from '../GifLoader/GifLoader';
+
 
 const GifDisplay = ({ gif, isFavorite = false, dispatch }) => {
 
@@ -33,7 +36,8 @@ const GifDisplay = ({ gif, isFavorite = false, dispatch }) => {
           <text>Failed to load your gif, please try again </text>
         )}
       />
-      <span className={remove} onClick={()=>handleRemove(gif.id)}>X</span>
+      <FontAwesomeIcon icon={faTimesCircle} className={remove} onClick={()=>handleRemove(gif.id)} />
+      {/* <span className={remove} onClick={()=>handleRemove(gif.id)}>X</span> */}
       </div>
     </div>
   );

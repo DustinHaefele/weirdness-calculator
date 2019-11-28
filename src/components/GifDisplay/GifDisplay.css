@@ -19,16 +19,12 @@
 
 .remove {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 2px;
+  right: 2px;
   cursor: pointer;
-  border: 1px solid black;
-  background-color: #ffffff;
+  background-color: white;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-weight: bold;
-  text-align: center;
+  border: 1px solid white;
 }
 
 .hidden {

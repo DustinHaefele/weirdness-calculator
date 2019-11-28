@@ -15,7 +15,7 @@ const WeirdnessSlider = ({searchTerm, error, dispatch }) => {
     <div className='sliderDiv'>
       {error.type === 'slider' && <p className='error'>{error.message}</p> }
       <Typography id="discrete-slider" gutterBottom>
-        Weirdness
+        Change Weirdness
       </Typography>
       <Slider
         defaultValue={0}
