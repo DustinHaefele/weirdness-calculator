@@ -73,11 +73,12 @@ const SearchSection = ({ favorites, error, dispatch }) => {
       </ol>
       <p>Brace yourself, you’re about to see how much of a weirdo you are.</p>
 
-      <form onSubmit={ev => handleSearch(ev)}>
+      <form onSubmit={ev => handleSearch(ev)} className='formDisplay'>
         {error.type === 'search' && <p className="error">{error.message}</p>}
-        <label htmlFor="search">Search Term: </label>
-        <input name="search" id="search" />
-        <button type="submit">Search</button>
+        <label htmlFor="search" className='searchLabel'>Search Term</label>
+        <div className='searchDiv'>
+        <input name="search" id="search" className='formElement'/>
+        <button type="submit" className='formElement'>Search</button></div>
       </form>
     </section>
   );
