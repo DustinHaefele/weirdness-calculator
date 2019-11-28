@@ -8,7 +8,7 @@ import './CurrentGifDisplay.css';
 
 const CurrentGifDisplay = ({ gif, error, dispatch }) => {
   return gif.images ? (
-    <div>
+    <section className='currentGifSection'>
       <h2>YOUR SEARCH RESULTS</h2>
       <div className='currentGifDisplay'>
         <GifDisplay gif={gif} />
@@ -21,12 +21,12 @@ const CurrentGifDisplay = ({ gif, error, dispatch }) => {
         LIKE ME
       </button>
       <WeirdnessSlider searchTerm={gif.searchTerm} error={error} />
-    </div>
+    </section>
   ) : (
-    <div>
+    <section className='currentGifSection'>
       <h2>YOUR SEARCH RESULTS</h2>
       <p>Your search results will appear here when they are available</p>
-    </div>
+    </section>
   );
 };
 
