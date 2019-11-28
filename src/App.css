@@ -37,9 +37,9 @@
   justify-content: space-between;
 }
 
-._40 {
+._45 {
   justify-content: center;
-  width: 40%;
+  width: 45%;
   /* margin: 0 0 15px 0; */
 }
 
@@ -47,8 +47,8 @@
   justify-content: space-around;
 }
 
-._60 {
-  width: 60%;
+._55 {
+  width: 55%;
 }
 
 ._100 {

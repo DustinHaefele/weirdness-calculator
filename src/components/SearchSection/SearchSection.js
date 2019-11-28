@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { batchActions } from 'redux-batched-actions';
 import { setCurrentGif, setError } from '../../redux/actions';
 import GiphyApiService from '../../services/giphy-api-service';
 import './SearchSection.css'
 
 const SearchSection = ({ favorites, error, dispatch }) => {
-  const history = useHistory();
 
   return (
     <section>
@@ -65,7 +63,6 @@ const SearchSection = ({ favorites, error, dispatch }) => {
           return GiphyApiService.getGifFromSearch(searchTerm)
             .then(gif => {
               dispatch(batchActions([setCurrentGif(gif), setError({})]));
-              history.push('/gifs');
             })
             .catch(() =>
               dispatch(

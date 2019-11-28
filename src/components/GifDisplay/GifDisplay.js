@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { removeFromFavorites } from '../../redux/actions';
 import { connect } from 'react-redux';
 import './GifDisplay.css';
@@ -7,10 +6,8 @@ import ImageLoader from 'rc-image-loader';
 import GifLoader from '../GifLoader/GifLoader';
 
 const GifDisplay = ({ gif, isFavorite = false, dispatch }) => {
-  const history = useHistory();
 
   if (!gif.images) {
-    history.push('/');
     return <></>;
   }
 
