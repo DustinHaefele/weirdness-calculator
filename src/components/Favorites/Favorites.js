@@ -2,7 +2,7 @@ import React from 'react';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './Favorites.css';
 
-export default function Favorites({ favorites, dispatch }) {
+export default function Favorites({ favorites }) {
   
   function displayFavorites() {
     return favorites.map(f => (

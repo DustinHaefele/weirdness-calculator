@@ -13,7 +13,7 @@ export default function GifPage() {
           <CurrentGif />
         </div>
         <div className="likedSection _45 vh">
-          <h2>YOUR LIKED GIFS</h2>
+          <h2 className='sectionTitle'>YOUR LIKED GIFS</h2>
           <FavoriteGifs />
         </div>
     </div>

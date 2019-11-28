@@ -9,7 +9,7 @@ import './CurrentGifDisplay.css';
 const CurrentGifDisplay = ({ gif, error, dispatch }) => {
   return gif.images ? (
     <section className='currentGifSection'>
-      <h2>YOUR SEARCH RESULTS</h2>
+      <h2 className='sectionTitle'>YOUR SEARCH RESULTS</h2>
       <div className='currentGifDisplay'>
         <GifDisplay gif={gif} />
       </div>
