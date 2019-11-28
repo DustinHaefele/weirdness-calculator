@@ -64,6 +64,18 @@
   text-align: center;
 }
 
+.button {
+  font-size: 25px;
+  color: white;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  background-color: gray;
+  padding: 5px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .error {
   color: red;
   font-size: 14px;

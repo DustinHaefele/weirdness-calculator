@@ -24,13 +24,3 @@
 
 
 
-.button {
-  font-size: 25px;
-  color: white;
-  display: block;
-  margin: auto;
-  background-color: gray;
-  padding: 5px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-}

@@ -18,3 +18,8 @@ export const setError = error => ({
   type: 'SET_ERROR',
   error
 });
+
+export const setIsCalc = isCalc => ({
+  type: 'SET_IS_CALC',
+  isCalc
+});
