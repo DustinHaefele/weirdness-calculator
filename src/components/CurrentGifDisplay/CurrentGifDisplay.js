@@ -30,7 +30,7 @@ const CurrentGifDisplay = ({ gif, favorites, error, dispatch }) => {
         <GifDisplay gif={gif} isFavorite={false}/>
       </div>
       {error.type === 'like' && <p className="error">{error.message}</p>}
-      <button className="likeButton" onClick={() => handleAddToFavorites()}>
+      <button className="likeButton button" onClick={() => handleAddToFavorites()}>
         <FontAwesomeIcon icon={faThumbsUp} className="thumbsUp" />
       </button>
       <WeirdnessSlider searchTerm={gif.searchTerm} error={error} />

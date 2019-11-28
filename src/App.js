@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Switch> 
         <Route exact path='/' component={GifPage} />
-        <Route path='/weird' component={WeirdnessPage} />
+        <Route path='/calculate' component={WeirdnessPage} />
       </Switch>
     </div>
   );
