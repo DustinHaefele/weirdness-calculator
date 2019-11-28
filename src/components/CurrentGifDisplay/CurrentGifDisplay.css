@@ -11,3 +11,28 @@
   text-align: left;
   flex: 1;
 }
+
+.thumbsUp {
+  font-size: 25px;
+  color: white;
+}
+
+.arrowUp {
+  font-size: 50px;
+  color: black;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.likeButton {
+  display: block;
+  margin: auto;
+  background-color: gray;
+  padding: 5px 20px;
+  border-radius: 5px;
+  border: 1px solid blue;
+  cursor: pointer;
+}

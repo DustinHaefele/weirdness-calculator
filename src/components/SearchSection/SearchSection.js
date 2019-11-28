@@ -50,7 +50,7 @@ const SearchSection = ({ favorites, error, dispatch }) => {
     <section className='searchSection'>
       <p>
         Find out how weird you are by selecting GIFs that make you laugh.
-        <br />
+        <br /><br />
         Here’s how you do it.
       </p>
       <ol>
