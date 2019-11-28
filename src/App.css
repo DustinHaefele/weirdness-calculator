@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -33,22 +37,23 @@
 .column {
   display: flex;
   flex-direction: column;
-  align-content: space-around;
-  justify-content: space-between;
+  justify-content: flex-start;
+
 }
 
-._40 {
+._45 {
   justify-content: center;
-  width: 40%;
+  width: 45%;
   /* margin: 0 0 15px 0; */
 }
 
 .around {
+  text-align: center;
   justify-content: space-around;
 }
 
-._60 {
-  width: 60%;
+._55 {
+  width: 55%;
 }
 
 ._100 {
@@ -58,4 +63,8 @@
 .error {
   color: red;
   font-size: 14px;
+  text-align: center;
+  font-weight: bold;
 }
+
+img{ display: block}

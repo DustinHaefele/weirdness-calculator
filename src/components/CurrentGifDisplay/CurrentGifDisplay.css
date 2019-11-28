@@ -3,3 +3,35 @@
   width: 100%;
   justify-content: space-around;
 }
+
+.currentGifSection {
+  border: 1px solid lightgray;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: left;
+  flex: 1;
+}
+
+.thumbsUp {
+  font-size: 25px;
+  color: white;
+}
+
+.arrowUp {
+  font-size: 50px;
+  color: black;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.likeButton {
+  display: block;
+  margin: auto;
+  background-color: gray;
+  padding: 5px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}

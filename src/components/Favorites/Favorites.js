@@ -2,18 +2,16 @@ import React from 'react';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './Favorites.css';
 
-export default function Favorites({ favorites, dispatch }) {
+export default function Favorites({ favorites }) {
   
   function displayFavorites() {
     return favorites.map(f => (
-      <div key={f.id}>
-        <GifDisplay gif={f.gif} isFavorite={true} />
-      </div>
+        <GifDisplay key={f.id} gif={f.gif} isFavorite={true} />
     ));
   }
 
   return (
-    <div>
+    <div className='row'>
       {favorites.length > 0 ? (
         displayFavorites()
       ) : (

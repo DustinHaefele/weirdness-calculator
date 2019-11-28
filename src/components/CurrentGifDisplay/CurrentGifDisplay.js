@@ -1,32 +1,48 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { batchActions } from 'redux-batched-actions';
-import { addToFavorites, setCurrentGif } from '../../redux/actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faThumbsUp,
+  faArrowAltCircleUp
+} from '@fortawesome/free-solid-svg-icons';
+import { addToFavorites, setCurrentGif, setError } from '../../redux/actions';
 import WeirdnessSlider from '../Slider/Slider';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './CurrentGifDisplay.css';
 
-const CurrentGifDisplay = ({ gif, error, dispatch }) => {
+const CurrentGifDisplay = ({ gif, favorites, error, dispatch }) => {
+  function handleAddToFavorites() {
+    if(favorites.length >=5){
+      dispatch(setError({
+        type: 'like',
+        message: 'You can only add 5 Gifs to your favorites.  To add this Gif to favorites you must remove one first.'
+      }))
+      return;
+    }
+    dispatch(batchActions([addToFavorites(gif), setCurrentGif({})]));
+  }
+
   return gif.images ? (
-    <div>
-      <h2>YOUR SEARCH RESULTS</h2>
-      <div className='currentGifDisplay'>
-        <GifDisplay gif={gif} />
+    <section className="currentGifSection">
+      <h2 className="sectionTitle">YOUR SEARCH RESULTS</h2>
+      <div className="currentGifDisplay">
+        <GifDisplay gif={gif} isFavorite={false}/>
       </div>
-      <button
-        onClick={() => {
-          dispatch(batchActions([addToFavorites(gif), setCurrentGif({})]));
-        }}
-      >
-        LIKE ME
+      {error.type === 'like' && <p className="error">{error.message}</p>}
+      <button className="likeButton" onClick={() => handleAddToFavorites()}>
+        <FontAwesomeIcon icon={faThumbsUp} className="thumbsUp" />
       </button>
       <WeirdnessSlider searchTerm={gif.searchTerm} error={error} />
-    </div>
+    </section>
   ) : (
-    <div>
-      <h2>YOUR SEARCH RESULTS</h2>
-      <p>Your search results will appear here when they are available</p>
-    </div>
+    <section className="currentGifSection">
+      <h2 className="sectionTitle">YOUR SEARCH RESULTS</h2>
+      <div className='center'>
+        <FontAwesomeIcon icon={faArrowAltCircleUp} className="arrowUp" transform="rotate--30"/>
+        <p>Search for a Gif above and your results will appear here when available.</p>
+      </div>
+    </section>
   );
 };
 

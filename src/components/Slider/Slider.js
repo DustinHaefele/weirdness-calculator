@@ -7,15 +7,63 @@ import Slider from '@material-ui/core/Slider';
 import { setCurrentGif, setError } from '../../redux/actions';
 import './Slider.css';
 
-const WeirdnessSlider = ({searchTerm, error, dispatch }) => {
+const WeirdnessSlider = ({ searchTerm, error, dispatch }) => {
+  function valueText(value) {
+    return `Weirdness value: ${value}`;
+  }
 
-  function valueText(value)  { return `Weirdness value: ${value}`}
-  
+  const marks = [
+    {
+      value: 0,
+      label: '0: Least weird'
+    },
+    {
+      value: 1,
+      label: ''
+    },
+    {
+      value: 2,
+      label: ''
+    },
+    {
+      value: 3,
+      label: ''
+    },
+    {
+      value: 4,
+      label: ''
+    },
+    {
+      value: 5,
+      label: ''
+    },
+    {
+      value: 6,
+      label: ''
+    },
+    {
+      value: 7,
+      label: ''
+    },
+    {
+      value: 8,
+      label: ''
+    },
+    {
+      value: 9,
+      label: ''
+    },
+    {
+      value: 10,
+      label: '10: Weirdest'
+    }
+  ];
+
   return (
-    <div className='sliderDiv'>
-      {error.type === 'slider' && <p className='error'>{error.message}</p> }
+    <div className="sliderDiv">
+      {error.type === 'slider' && <p className="error">{error.message}</p>}
       <Typography id="discrete-slider" gutterBottom>
-        Weirdness
+        Change Weirdness
       </Typography>
       <Slider
         defaultValue={0}
@@ -28,17 +76,26 @@ const WeirdnessSlider = ({searchTerm, error, dispatch }) => {
           if (!searchTerm.trim()) {
             return;
           }
-          return GiphyApiService.getGifFromSearch(searchTerm, value).then(gif =>{
-            dispatch(batchActions([setCurrentGif(gif), setError({})]));
-          }).catch(()=> dispatch(setError({type: 'slider', message: 'Oops, something went wrong.  Give it another try'})))
+          return GiphyApiService.getGifFromSearch(searchTerm, value)
+            .then(gif => {
+              dispatch(batchActions([setCurrentGif(gif), setError({})]));
+            })
+            .catch(() =>
+              dispatch(
+                setError({
+                  type: 'slider',
+                  message: 'Oops, something went wrong.  Give it another try'
+                })
+              )
+            );
         }}
         step={1}
-        marks
+        marks={marks}
         min={0}
         max={10}
       />
     </div>
   );
-}
+};
 
-export default connect()(WeirdnessSlider)
+export default connect()(WeirdnessSlider);

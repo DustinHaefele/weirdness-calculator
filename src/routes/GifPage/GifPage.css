@@ -1,0 +1,14 @@
+.likedSection {
+  padding: 20px;
+  text-align: left;
+  border: .75px solid lightgray;
+  background-color: #EFEFEF;
+}
+
+.vh {
+  min-height: 100vh;
+}
+
+.sectionTitle {
+  margin: 15px 15px;
+}

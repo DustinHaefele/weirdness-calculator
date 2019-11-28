@@ -2,26 +2,20 @@ import React from 'react';
 import SearchContainer from '../../containers/SearchContainer/SearchContainer';
 import CurrentGif from '../../containers/CurrentGif/CurrentGif';
 import FavoriteGifs from '../../containers/FavoriteGifs/FavoriteGifs';
+import './GifPage.css';
 
 export default function GifPage() {
   return (
     <div className="row">
-      <div className="row _100">
-        <div className="column _40">
+
+        <div className="_55 vh column">
           <SearchContainer />
-        </div>
-        <div className="column _60">
-          <h2>YOUR LIKED GIFS</h2>
-        </div>
-      </div>
-      <div className="row _100">
-        <div className="column _40">
           <CurrentGif />
         </div>
-        <div className="column _60 between">
+        <div className="likedSection _45 vh">
+          <h2 className='sectionTitle'>YOUR LIKED GIFS</h2>
           <FavoriteGifs />
         </div>
-      </div>
     </div>
   );
 }
