@@ -22,6 +22,8 @@ export default function Favorites({ favorites, error, dispatch }) {
     dispatch(setError({type:'favorites', message:`You must have five favorites before we can calculate how weird you are. Please add ${5-favorites.length} more gifs and try again!`}));
   }
 
+  const gifsNeeded = 5 - favorites.length;
+
   return (
     <div className="row">
       {favorites.length > 0 ? (
@@ -29,10 +31,13 @@ export default function Favorites({ favorites, error, dispatch }) {
       ) : (
         <p>When you add gifs to your favorites they will be displayed here</p>
       )}
+      <div className='_100 center'>
       {error.type==='favorites' && <p className='error'>{error.message}</p>}
       <button className="calculateButton button" onClick={calculateWeirdness}>
         Calculate Weirdness
       </button>
+      <p>You must like <strong>{gifsNeeded}</strong> more gifs to calculate weirdness</p>
+      </div>
     </div>
   );
 }
