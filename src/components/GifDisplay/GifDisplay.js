@@ -16,12 +16,12 @@ const GifDisplay = ({ gif, isFavorite = false, dispatch }) => {
   }
 
   const url = gif.images.fixed_width.url || '';
-  const title = `${gif.searchTerm}: ${gif.title}` || '';
+  const title = `${gif.searchTerm} gif` || '';
 
   const remove = isFavorite ? 'remove' : 'hidden';
 
   return (
-    <div className="_40 around">
+    <div className="_45 gifDisplay around">
       <h3 className="gifTitle">{title}</h3>
       <div className='wrapper'>
       <ImageLoader
