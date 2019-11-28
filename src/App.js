@@ -3,7 +3,7 @@ import { Switch, Route} from 'react-router-dom'
 import './App.css';
 import Header from './components/Header/Header';
 import GifPage from './routes/GifPage/GifPage';
-import WeirdnessPage from './routes/WeirdnessPage/WeirdnessPage';
+import ResultsPage from './routes/ResultsPage/ResultsPage';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Switch> 
         <Route exact path='/' component={GifPage} />
-        <Route path='/calculate' component={WeirdnessPage} />
+        <Route path='/results' component={ResultsPage} />
       </Switch>
     </div>
   );
