@@ -26,11 +26,11 @@ const CurrentGifDisplay = ({ gif, favorites, error, dispatch }) => {
   return gif.images ? (
     <section className="currentGifSection">
       <h2 className="sectionTitle">YOUR SEARCH RESULTS</h2>
-      <div className="currentGifDisplay">
+      <div className="currentGifDisplay center">
         <GifDisplay gif={gif} isFavorite={false}/>
       </div>
       {error.type === 'like' && <p className="error">{error.message}</p>}
-      <button className="likeButton" onClick={() => handleAddToFavorites()}>
+      <button className="likeButton button" onClick={() => handleAddToFavorites()}>
         <FontAwesomeIcon icon={faThumbsUp} className="thumbsUp" />
       </button>
       <WeirdnessSlider searchTerm={gif.searchTerm} error={error} />

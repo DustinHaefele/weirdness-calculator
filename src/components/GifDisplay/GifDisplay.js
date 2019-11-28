@@ -25,7 +25,7 @@ const GifDisplay = ({ gif, isFavorite, dispatch }) => {
   const remove = isFavorite ? 'remove' : 'hidden';
 
   return (
-    <div className="_45 gifDisplay around">
+    <div>
       <h3 className="gifTitle">{title}</h3>
       <div className='wrapper'>
       <ImageLoader

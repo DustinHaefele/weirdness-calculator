@@ -13,8 +13,7 @@
 }
 
 .thumbsUp {
-  font-size: 25px;
-  color: white;
+  
 }
 
 .arrowUp {
@@ -23,15 +22,5 @@
   text-align: center;
 }
 
-.center {
-  text-align: center;
-}
 
-.likeButton {
-  display: block;
-  margin: auto;
-  background-color: gray;
-  padding: 5px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-}
+
