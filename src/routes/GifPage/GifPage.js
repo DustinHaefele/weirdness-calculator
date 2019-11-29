@@ -4,6 +4,7 @@ import CurrentGif from '../../containers/CurrentGif/CurrentGif';
 import FavoriteGifs from '../../containers/FavoriteGifs/FavoriteGifs';
 import './GifPage.css';
 
+//Presentational component to display main page when routed there by react router.
 export default function GifPage() {
   return (
     <div className="row">

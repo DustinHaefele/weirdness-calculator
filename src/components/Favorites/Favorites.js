@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './Favorites.css';
 
+//Presentational component to display any GIFs added to favorites.
 export default function Favorites({ favorites, error, setError, handleRemove }) {
   const history = useHistory();
 

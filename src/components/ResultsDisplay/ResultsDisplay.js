@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './ResultsDisplay.css';
 
+//Presentational component to display the results once a user has liked 5 GIFs and clicked calculate
 export default function ResultsDisplay({ favorites, handleRestart }) {
   const history = useHistory();
 

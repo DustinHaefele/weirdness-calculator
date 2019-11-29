@@ -4,11 +4,13 @@ import GiphyApiService from '../../services/giphy-api-service';
 import Slider from '@material-ui/core/Slider';
 import './Slider.css';
 
+//Presentational component to display slider for user to change weirdness
 export default function WeirdnessSlider ({ gif, favorites, error, setCurrentGif, setError }) {
+  //text for slider Aria
   function valueText(value) {
     return `Weirdness value: ${value}`;
   }
-
+// labels for the slider
   const marks = [
     {
       value: 0,
@@ -62,7 +64,7 @@ export default function WeirdnessSlider ({ gif, favorites, error, setCurrentGif,
     const searchTermInFavorites = favorites.some(fav => {
       return fav.gif.searchTerm === gif.searchTerm;
     });
-
+    //Error handling conditions before searching with a new weirdness
     if (!gif.searchTerm.trim()) {
       setError({
         type: 'slider',

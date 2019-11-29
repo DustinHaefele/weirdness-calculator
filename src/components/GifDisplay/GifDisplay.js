@@ -5,6 +5,7 @@ import './GifDisplay.css';
 import ImageLoader from 'rc-image-loader';
 import GifLoader from '../GifLoader/GifLoader';
 
+//Reusable Presentational component to display a single GIF in either favorites, results, or current.
 export default function GifDisplay({ gif, isFavorite, handleRemove }) {
   if (!gif.images) {
     return <></>;

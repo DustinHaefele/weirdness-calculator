@@ -2,6 +2,7 @@ import React from 'react';
 import GiphyApiService from '../../services/giphy-api-service';
 import './SearchSection.css';
 
+//Presentational component to display a section weher the user can search as well as site instructions
 export default function SearchSection({
   favorites,
   error,
@@ -16,6 +17,8 @@ export default function SearchSection({
     const searchTermInFavorites = favorites.some(fav => {
       return fav.gif.searchTerm === searchTerm;
     });
+
+    //Error handling conditions before searching
     if (!searchTerm.trim()) {
       setError({
         type: 'search',
