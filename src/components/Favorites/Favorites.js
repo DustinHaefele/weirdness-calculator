@@ -23,7 +23,7 @@ export default function Favorites({ favorites, error, setError, handleRemove }) 
       setError({
         type: 'favorites',
         message: `You must have five favorites before we can calculate how weird you are. Please add ${5 -
-          favorites.length} more gifs and try again!`
+          favorites.length} more GIFs and try again!`
       });
   }
 

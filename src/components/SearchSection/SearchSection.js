@@ -27,9 +27,8 @@ export default function SearchSection({
       setError({
         type: 'search',
         message:
-          'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the gif with this search term from favorites and try again'
+          'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the GIF with this search term from favorites and try again'
       });
-
       return;
     }
     return GiphyApiService.getGifFromSearch(searchTerm)

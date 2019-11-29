@@ -19,19 +19,28 @@ export default function CurrentGifDisplay({ gif, favorites, error, setError, add
     if(favorites.length >=5){
       setError({
         type: 'like',
-        message: 'You can only add 5 Gifs to your favorites.  To add this Gif to favorites you must remove one first.'
+        message: 'You can only add 5 GIFs to your favorites.  To add this Gif to favorites you must remove one first.'
       })
       return;
-    } else if (!gif.images.fixed_width.url) {
+    } else if(!gif.images){
       setError({
         type: 'like',
-        message: 'Sorry, we could not get this gif, try another term!'
-      }) } 
+        message: 'Sorry, we could not get this GIF, try searching another term!'
+      }) 
+      return;
+    }
+      else if (!gif.images.fixed_width.url) {
+      setError({
+        type: 'like',
+        message: 'Sorry, we could not get this GIF, try searching another term!'
+      }) 
+      return;
+    } 
       else if (searchTermInFavorites) {
         setError({
           type: 'like',
           message:
-            'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the gif with this search term from favorites and try again'
+            'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the GIF with this search term from favorites and try again'
         });
         return;
       }
