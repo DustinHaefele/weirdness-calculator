@@ -16,6 +16,11 @@ export default function CurrentGifDisplay({ gif, favorites, error, setError, add
         message: 'You can only add 5 Gifs to your favorites.  To add this Gif to favorites you must remove one first.'
       })
       return;
+    } else if (!gif.images.fixed_width.url) {
+      setError({
+        type: 'like',
+        message: 'Sorry, we could not get this gif, try another term!'
+      })
     }
     addCurrentToFavorites(gif);
   }
