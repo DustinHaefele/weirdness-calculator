@@ -12,7 +12,7 @@ export default function GifDisplay({ gif, isFavorite, handleRemove }) {
   }
 
   const url = gif.images.fixed_width.url || '';
-  const title = `${gif.searchTerm} gif` || '';
+  const title = `${gif.searchTerm} GIF` || '';
 
   const remove = isFavorite ? 'remove' : 'hidden';
 

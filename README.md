@@ -1,3 +1,68 @@
+
+<h1 align="center"> Weirdness Calculator </h1> <br>
+
+<p align="center">
+  Using GIFs to find out how weird you are since November 2019.
+</p>
+
+
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Feedback](#feedback)
+- [Contributors](#contributors)
+- [Build Process](#build-process)
+- [Backers](#backers-)
+- [Sponsors](#sponsors-)
+- [Acknowledgments](#acknowledgments)
+
+
+## Introduction
+
+Use the Giphy API to find GIFs.  You can select 5 GIFs that you like and we will tell you how weird you are based on your selections.
+
+## Features
+
+A few of the things you can do with Weirdness Calculator:
+
+* Search for GIFs using any search term.
+* Once you get a GIF you can tell us how weird you want it and we'll give you one that matches your request
+* Add GIFs to your favorites
+* Remove GIFs from favorites
+* Calculate how weird you are based on your selections
+* Start over again!
+
+<p align="center">
+  <img src = "./screenShot.png" width=700>
+</p>
+
+## Contributors
+
+Just me - Dustin Haefele
+
+## Build Process - need to update
+
+- Clone or download the repo
+- `yarn` to install dependencies
+- `yarn run link` to link react-native dependencies
+- `yarn start:ios` to start the packager and run the app in the iOS simulator (`yarn start:ios:logger` will boot the application with [redux-logger](<https://github.com/evgenyrodionov/redux-logger>))
+- `yarn start:android` to start the packager and run the app in the the Android device/emulator (`yarn start:android:logger` will boot the application with [redux-logger](https://github.com/evgenyrodionov/redux-logger))
+
+Please take a look at the [contributing guidelines](./CONTRIBUTING.md) for a detailed process on how to build your application as well as troubleshooting information.
+
+**Development Keys**: The `CLIENT_ID` and `CLIENT_SECRET` in `api/index.js` are for development purposes and do not represent the actual application keys. Feel free to use them or use a new set of keys by creating an [OAuth application](https://github.com/settings/applications/new) of your own. Set the "Authorization callback URL" to `gitpoint://welcome`.
+
+
+
+## Acknowledgments
+
+Thanks to [Politech](http://www.politech.io/) for allowing me to complete this coding challenge, to [GiphyAPI](https://developers.giphy.com/docs/api/endpoint#translate) for the API usage and this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -37,32 +102,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

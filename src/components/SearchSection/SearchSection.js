@@ -30,7 +30,7 @@ export default function SearchSection({
       setError({
         type: 'search',
         message:
-          'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the GIF with this search term from favorites and try again'
+          'You already searched for that. You can only add one GIF to your favorites for each search term. Try searching another term, or remove the GIF with this search term from favorites and try again.'
       });
       return;
     }
