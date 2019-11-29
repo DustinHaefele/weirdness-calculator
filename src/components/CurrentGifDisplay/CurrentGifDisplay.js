@@ -4,7 +4,6 @@ import {
   faThumbsUp,
   faArrowAltCircleUp
 } from '@fortawesome/free-solid-svg-icons';
-// import WeirdnessSlider from '../Slider/Slider';
 import SliderContainer from '../../containers/SliderContainer/SliderContainer';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './CurrentGifDisplay.css';
