@@ -1,6 +1,6 @@
 import React from 'react';
-import FavoriteGifs  from "../../containers/FavoriteGifs/FavoriteGifs";
+import ResultsContainer  from "../../containers/ResultsContainer/ResultsContainer";
 
-export default function WeirdnessPage() {
-  return <FavoriteGifs />;
+export default function ResultsPage() {
+  return <ResultsContainer />;
 }
