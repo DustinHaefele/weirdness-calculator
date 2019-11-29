@@ -81,8 +81,15 @@ export default function WeirdnessSlider ({ gif, favorites, error, setCurrentGif,
     }
 
     return GiphyApiService.getGifFromSearch(gif.searchTerm, value)
-      .then(gif => {
-        setCurrentGif(gif);
+      .then(newGif => {
+        if (newGif.id === gif.id) {
+          setError({
+            type: 'slider',
+            message: 'Oops, we grabbed the same GIF again!  Try a different weirdness.  If this happens again it might be the only GIF we have for that search so try another term.'
+          })
+          return;
+        }
+        setCurrentGif(newGif);
       })
       .catch(() =>
         setError({
