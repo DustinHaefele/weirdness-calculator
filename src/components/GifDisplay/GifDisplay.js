@@ -1,7 +1,4 @@
 import React from 'react';
-// import { removeFromFavorites, setError } from '../../redux/actions';
-// import { batchActions } from 'redux-batched-actions';
-// import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import './GifDisplay.css';
@@ -12,10 +9,6 @@ export default function GifDisplay({ gif, isFavorite, handleRemove }) {
   if (!gif.images) {
     return <></>;
   }
-
-  // function handleRemove(id) {
-  //   dispatch(batchActions([removeFromFavorites(id), setError({})]));
-  // }
 
   const url = gif.images.fixed_width.url || '';
   const title = `${gif.searchTerm} gif` || '';
@@ -44,5 +37,3 @@ export default function GifDisplay({ gif, isFavorite, handleRemove }) {
     </div>
   );
 }
-
-
