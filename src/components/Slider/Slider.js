@@ -4,7 +4,7 @@ import GiphyApiService from '../../services/giphy-api-service';
 import Slider from '@material-ui/core/Slider';
 import './Slider.css';
 
-export default function WeirdnessSlider ({ gif, error, setCurrentGif, setError }) {
+export default function WeirdnessSlider ({ gif, favorites, error, setCurrentGif, setError }) {
   function valueText(value) {
     return `Weirdness value: ${value}`;
   }
@@ -59,7 +59,22 @@ export default function WeirdnessSlider ({ gif, error, setCurrentGif, setError }
   function handleSliderMove(ev, value) {
     ev.preventDefault();
 
+    const searchTermInFavorites = favorites.some(fav => {
+      return fav.gif.searchTerm === gif.searchTerm;
+    });
+
     if (!gif.searchTerm.trim()) {
+      setError({
+        type: 'slider',
+        message: 'Please enter a search term'
+      });
+      return;
+    } else if (searchTermInFavorites) {
+      setError({
+        type: 'slider',
+        message:
+          'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the gif with this search term from favorites and try again'
+      });
       return;
     }
 
