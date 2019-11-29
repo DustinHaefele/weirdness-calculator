@@ -1,13 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { batchActions } from 'redux-batched-actions';
 import Typography from '@material-ui/core/Typography';
 import GiphyApiService from '../../services/giphy-api-service';
 import Slider from '@material-ui/core/Slider';
-import { setCurrentGif, setError } from '../../redux/actions';
 import './Slider.css';
 
-const WeirdnessSlider = ({ searchTerm, error, dispatch }) => {
+export default function WeirdnessSlider ({ gif, error, setCurrentGif, setError }) {
   function valueText(value) {
     return `Weirdness value: ${value}`;
   }
@@ -59,6 +56,25 @@ const WeirdnessSlider = ({ searchTerm, error, dispatch }) => {
     }
   ];
 
+  function handleSliderMove(ev, value) {
+    ev.preventDefault();
+
+    if (!gif.searchTerm.trim()) {
+      return;
+    }
+
+    return GiphyApiService.getGifFromSearch(gif.searchTerm, value)
+      .then(gif => {
+        setCurrentGif(gif);
+      })
+      .catch(() =>
+        setError({
+          type: 'slider',
+          message: 'Oops, something went wrong.  Give it another try'
+        })
+      );
+  }
+
   return (
     <div className="sliderDiv">
       {error.type === 'slider' && <p className="error">{error.message}</p>}
@@ -70,25 +86,7 @@ const WeirdnessSlider = ({ searchTerm, error, dispatch }) => {
         getAriaValueText={valueText}
         aria-labelledby="discrete-slider"
         valueLabelDisplay="auto"
-        onChangeCommitted={(ev, value) => {
-          ev.preventDefault();
-
-          if (!searchTerm.trim()) {
-            return;
-          }
-          return GiphyApiService.getGifFromSearch(searchTerm, value)
-            .then(gif => {
-              dispatch(batchActions([setCurrentGif(gif), setError({})]));
-            })
-            .catch(() =>
-              dispatch(
-                setError({
-                  type: 'slider',
-                  message: 'Oops, something went wrong.  Give it another try'
-                })
-              )
-            );
-        }}
+        onChangeCommitted={(ev, value) => handleSliderMove(ev, value)}
         step={1}
         marks={marks}
         min={0}
@@ -98,4 +96,4 @@ const WeirdnessSlider = ({ searchTerm, error, dispatch }) => {
   );
 };
 
-export default connect()(WeirdnessSlider);
+

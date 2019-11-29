@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import Favorites from '../../components/Favorites/Favorites';
+import { batchActions } from 'redux-batched-actions';
+import { setError, removeFromFavorites } from '../../redux/actions';
 
 
 const mapStateToProps = state => ({
@@ -7,4 +9,9 @@ const mapStateToProps = state => ({
   error: state.error,
 })
 
-export default connect(mapStateToProps)(Favorites)
+const mapDispatchToProps = dispatch => ({
+  setError: error => dispatch(setError(error)),
+  handleRemove: id => dispatch(batchActions([removeFromFavorites(id), setError({})])),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites)

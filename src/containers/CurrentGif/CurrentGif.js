@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import CurrentGifDisplay from '../../components/CurrentGifDisplay/CurrentGifDisplay';
+import { addToFavorites, setCurrentGif, setError } from '../../redux/actions';
+import { batchActions } from 'redux-batched-actions';
 
 const mapStateToProps = state => ({
   gif: state.currentGif,
@@ -7,4 +9,9 @@ const mapStateToProps = state => ({
   error: state.error
 })
 
-export default connect(mapStateToProps)(CurrentGifDisplay)
+const mapDispatchToProps = dispatch => ({
+  setError: error => dispatch(setError(error)),
+  addCurrentToFavorites: gif => dispatch(batchActions([addToFavorites(gif), setCurrentGif({})]))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentGifDisplay)
