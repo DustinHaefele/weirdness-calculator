@@ -9,6 +9,10 @@ export const removeFromFavorites = id => ({
   id
 });
 
+export const clearFavorites = () => ({
+  type: 'CLEAR_FAVORITES'
+})
+
 export const setCurrentGif = gif => ({
   type: 'SET_CURRENT_GIF',
   gif
