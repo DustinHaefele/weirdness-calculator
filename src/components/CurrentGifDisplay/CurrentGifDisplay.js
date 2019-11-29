@@ -1,17 +1,14 @@
 import React from 'react';
-//import { connect } from 'react-redux';
-// import { batchActions } from 'redux-batched-actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faThumbsUp,
   faArrowAltCircleUp
 } from '@fortawesome/free-solid-svg-icons';
-// import { addToFavorites, setCurrentGif, setError } from '../../redux/actions';
 import WeirdnessSlider from '../Slider/Slider';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './CurrentGifDisplay.css';
 
-const CurrentGifDisplay = ({ gif, favorites, error, setError, addCurrentToFavorites }) => {
+export default function CurrentGifDisplay({ gif, favorites, error, setError, addCurrentToFavorites }) {
   function handleAddToFavorites() {
     if(favorites.length >=5){
       setError({
@@ -46,4 +43,3 @@ const CurrentGifDisplay = ({ gif, favorites, error, setError, addCurrentToFavori
   );
 };
 
-export default CurrentGifDisplay;

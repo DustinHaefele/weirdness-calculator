@@ -1,10 +1,9 @@
 import React from 'react';
-import { setError } from '../../redux/actions';
 import { useHistory } from 'react-router';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './Favorites.css';
 
-export default function Favorites({ favorites, error, dispatch }) {
+export default function Favorites({ favorites, error, setError }) {
   const history = useHistory();
 
   function displayFavorites() {
@@ -17,17 +16,15 @@ export default function Favorites({ favorites, error, dispatch }) {
 
   function calculateWeirdness() {
     if (favorites.length >= 5) {
-      dispatch(setError({}));
+      setError({});
       history.push('/results');
       return;
     }
-    dispatch(
       setError({
         type: 'favorites',
         message: `You must have five favorites before we can calculate how weird you are. Please add ${5 -
           favorites.length} more gifs and try again!`
-      })
-    );
+      });
   }
 
   const gifsNeeded = 5 - favorites.length;
