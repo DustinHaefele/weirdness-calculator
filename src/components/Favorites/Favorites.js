@@ -3,13 +3,13 @@ import { useHistory } from 'react-router';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './Favorites.css';
 
-export default function Favorites({ favorites, error, setError }) {
+export default function Favorites({ favorites, error, setError, handleRemove }) {
   const history = useHistory();
 
   function displayFavorites() {
     return favorites.map(f => (
       <div key={f.id} className="_45 gifDisplay around">
-        <GifDisplay gif={f.gif} isFavorite={true} />
+        <GifDisplay gif={f.gif} handleRemove={handleRemove} isFavorite={true} />
       </div>
     ));
   }
