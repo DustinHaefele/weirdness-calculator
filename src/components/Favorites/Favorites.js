@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './Favorites.css';
 
+//Presentational component to display any GIFs added to favorites.
 export default function Favorites({ favorites, error, setError, handleRemove }) {
   const history = useHistory();
 
@@ -23,7 +24,7 @@ export default function Favorites({ favorites, error, setError, handleRemove }) 
       setError({
         type: 'favorites',
         message: `You must have five favorites before we can calculate how weird you are. Please add ${5 -
-          favorites.length} more gifs and try again!`
+          favorites.length} more GIFs and try again!`
       });
   }
 
@@ -35,7 +36,7 @@ export default function Favorites({ favorites, error, setError, handleRemove }) 
       {favorites.length > 0 ? (
         displayFavorites()
       ) : (
-        <p>When you add gifs to your favorites they will be displayed here</p>
+        <p>When you add GIFs to your favorites they will be displayed here</p>
       )}
 
       <div className="_100 center">
@@ -44,7 +45,7 @@ export default function Favorites({ favorites, error, setError, handleRemove }) 
           Calculate Weirdness
         </button>
         <p>
-          You must like <strong>{gifsNeeded}</strong> more gifs to calculate
+          You must like <strong>{gifsNeeded}</strong> more GIFs to calculate
           weirdness
         </p>
       </div>

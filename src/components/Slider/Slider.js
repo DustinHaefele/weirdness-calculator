@@ -4,11 +4,13 @@ import GiphyApiService from '../../services/giphy-api-service';
 import Slider from '@material-ui/core/Slider';
 import './Slider.css';
 
-export default function WeirdnessSlider ({ gif, error, setCurrentGif, setError }) {
+//Presentational component to display slider for user to change weirdness
+export default function WeirdnessSlider ({ gif, favorites, error, setCurrentGif, setError }) {
+  //text for slider Aria
   function valueText(value) {
     return `Weirdness value: ${value}`;
   }
-
+// labels for the slider
   const marks = [
     {
       value: 0,
@@ -59,13 +61,35 @@ export default function WeirdnessSlider ({ gif, error, setCurrentGif, setError }
   function handleSliderMove(ev, value) {
     ev.preventDefault();
 
+    const searchTermInFavorites = favorites.some(fav => {
+      return fav.gif.searchTerm === gif.searchTerm;
+    });
+    //Error handling conditions before searching with a new weirdness
     if (!gif.searchTerm.trim()) {
+      setError({
+        type: 'slider',
+        message: 'Please enter a search term'
+      });
+      return;
+    } else if (searchTermInFavorites) {
+      setError({
+        type: 'slider',
+        message:
+          'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the GIF with this search term from favorites and try again'
+      });
       return;
     }
 
     return GiphyApiService.getGifFromSearch(gif.searchTerm, value)
-      .then(gif => {
-        setCurrentGif(gif);
+      .then(newGif => {
+        if (newGif.id === gif.id) {
+          setError({
+            type: 'slider',
+            message: "Oops, we grabbed the same GIF!  Try a different weirdness.  If this problem persists we probably don't have a lot of GIFs that match your search term so you may want to search something else"
+          })
+          return;
+        }
+        setCurrentGif(newGif);
       })
       .catch(() =>
         setError({
