@@ -3,6 +3,7 @@ import Lottie from 'react-lottie';
 import LoadingGif from '../../images/gif-loading.json';
 import './GifLoader.css';
 
+//Presentational component to display an animation while the GIF is loading.
 export default function GifLoader({ isFavorite }) {
   const defaultOptions = {
     loop: true,

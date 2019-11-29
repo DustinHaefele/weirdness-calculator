@@ -2,6 +2,7 @@ import React from 'react';
 import GiphyApiService from '../../services/giphy-api-service';
 import './SearchSection.css';
 
+//Presentational component to display a section weher the user can search as well as site instructions
 export default function SearchSection({
   favorites,
   error,
@@ -16,6 +17,8 @@ export default function SearchSection({
     const searchTermInFavorites = favorites.some(fav => {
       return fav.gif.searchTerm === searchTerm;
     });
+
+    //Error handling conditions before searching
     if (!searchTerm.trim()) {
       setError({
         type: 'search',
@@ -27,9 +30,8 @@ export default function SearchSection({
       setError({
         type: 'search',
         message:
-          'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the gif with this search term from favorites and try again'
+          'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the GIF with this search term from favorites and try again'
       });
-
       return;
     }
     return GiphyApiService.getGifFromSearch(searchTerm)
@@ -47,32 +49,29 @@ export default function SearchSection({
 
   return (
     <section className="searchSection">
+      
+       <h2 className='sectionTitle'> Find out how weird you are by selecting your favorite GIFs.</h2>
       <p>
-        Find out how weird you are by selecting your favorite gifs.
-        <br />
-        <br />
         Here’s how you do it.
       </p>
-      <ol>
-        <li>
+      <ol className='orderedList'>
+        <li className='listItem'>
           Type anything (we mean anything) into the search box and we will come
-          up with related GIFS
+          up with related GIFs
         </li>
-        <li>
-          View the GIFS we come up with (if you don’t like them you can either
-          move the slider to make them weirder, or come up with a new search
+        <li className='listItem'>
+          View the GIFs we come up with (if you don’t like them you can either
+          move the slider to make them more or less weird, or come up with a new search
           term)
         </li>
-        <li>
-          Click “like me” for the ones you most enjoy (remember you can only
-          choose five!)
+        <li className='listItem'>
+          Click “thumbs up” for the ones you enjoy the most.  
         </li>
-        <li>
+        <li className='listItem'>
           After you have selected five, we will show you just how weird you are.
         </li>
       </ol>
-      <p>Brace yourself, you’re about to see how much of a weirdo you are.</p>
-
+      
       <form onSubmit={ev => handleSearch(ev)} className="formDisplay">
         {error.type === 'search' && <p className="error">{error.message}</p>}
         <label htmlFor="search" className="searchLabel">
