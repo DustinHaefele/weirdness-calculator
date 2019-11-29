@@ -1,26 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { batchActions } from 'redux-batched-actions';
+//import { connect } from 'react-redux';
+// import { batchActions } from 'redux-batched-actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faThumbsUp,
   faArrowAltCircleUp
 } from '@fortawesome/free-solid-svg-icons';
-import { addToFavorites, setCurrentGif, setError } from '../../redux/actions';
+// import { addToFavorites, setCurrentGif, setError } from '../../redux/actions';
 import WeirdnessSlider from '../Slider/Slider';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './CurrentGifDisplay.css';
 
-const CurrentGifDisplay = ({ gif, favorites, error, dispatch }) => {
+const CurrentGifDisplay = ({ gif, favorites, error, setError, addCurrentToFavorites }) => {
   function handleAddToFavorites() {
     if(favorites.length >=5){
-      dispatch(setError({
+      setError({
         type: 'like',
         message: 'You can only add 5 Gifs to your favorites.  To add this Gif to favorites you must remove one first.'
-      }))
+      })
       return;
     }
-    dispatch(batchActions([addToFavorites(gif), setCurrentGif({})]));
+    addCurrentToFavorites(gif);
   }
 
   return gif.images ? (
@@ -46,4 +46,4 @@ const CurrentGifDisplay = ({ gif, favorites, error, dispatch }) => {
   );
 };
 
-export default connect()(CurrentGifDisplay);
+export default CurrentGifDisplay;
