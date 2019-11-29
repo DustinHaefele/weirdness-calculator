@@ -4,7 +4,8 @@ import {
   faThumbsUp,
   faArrowAltCircleUp
 } from '@fortawesome/free-solid-svg-icons';
-import WeirdnessSlider from '../Slider/Slider';
+// import WeirdnessSlider from '../Slider/Slider';
+import SliderContainer from '../../containers/SliderContainer/SliderContainer';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './CurrentGifDisplay.css';
 
@@ -30,7 +31,7 @@ export default function CurrentGifDisplay({ gif, favorites, error, setError, add
       <button className="likeButton button" onClick={() => handleAddToFavorites()}>
         <FontAwesomeIcon icon={faThumbsUp} className="thumbsUp" />
       </button>
-      <WeirdnessSlider searchTerm={gif.searchTerm} error={error} />
+      <SliderContainer />
     </section>
   ) : (
     <section className="currentGifSection">

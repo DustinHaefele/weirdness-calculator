@@ -48,7 +48,7 @@ export default function SearchSection({
   return (
     <section className="searchSection">
       <p>
-        Find out how weird you are by selecting GIFs that make you laugh.
+        Find out how weird you are by selecting your favorite gifs.
         <br />
         <br />
         Here’s how you do it.
