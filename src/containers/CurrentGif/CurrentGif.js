@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setError: error => dispatch(setError(error)),
-  addCurrentToFavorites: gif => dispatch(batchActions([addToFavorites(gif), setCurrentGif({})]))
+  addCurrentToFavorites: gif => dispatch(batchActions([addToFavorites(gif), setCurrentGif({}), setError({})]))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentGifDisplay)

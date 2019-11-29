@@ -10,10 +10,10 @@ export default function ResultsDisplay({ favorites, handleRestart }) {
     history.push('/');
   }
 
-  function displayFavorites() {
+  function displayResults() {
     return favorites.map(f => (
       <div key={f.id} className="gifDisplay around">
-        <GifDisplay gif={f.gif} isFavorite={true} />
+        <GifDisplay gif={f.gif}  />
         <h4>{f.gif.weirdness}/10</h4>
       </div>
     ));
@@ -31,10 +31,13 @@ export default function ResultsDisplay({ favorites, handleRestart }) {
 
   return (
     <div className="row">
-      <div className="_100 center">
+      <div className="_100 center resultsHeader">
         <h2>You Scored an {average()} out of 10 on the weirdness scale</h2>
       </div>
-      {displayFavorites()}
+      <div className='titleDiv'>
+      <h3 className='sectionTitle'>The GIFs you liked</h3>
+      </div>
+      {displayResults()}
       <div className="_100 center">
         <button className="restartButton button" onClick={() => handleRestart()}>
           Start Over

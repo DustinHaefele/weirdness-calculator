@@ -35,7 +35,7 @@ export default function Favorites({ favorites, error, setError, handleRemove }) 
       {favorites.length > 0 ? (
         displayFavorites()
       ) : (
-        <p>When you add gifs to your favorites they will be displayed here</p>
+        <p>When you add GIFs to your favorites they will be displayed here</p>
       )}
 
       <div className="_100 center">
@@ -44,7 +44,7 @@ export default function Favorites({ favorites, error, setError, handleRemove }) 
           Calculate Weirdness
         </button>
         <p>
-          You must like <strong>{gifsNeeded}</strong> more gifs to calculate
+          You must like <strong>{gifsNeeded}</strong> more GIFs to calculate
           weirdness
         </p>
       </div>

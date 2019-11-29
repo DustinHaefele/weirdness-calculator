@@ -56,7 +56,7 @@ export default function CurrentGifDisplay({ gif, favorites, error, setError, add
       <h2 className="sectionTitle">YOUR SEARCH RESULTS</h2>
       <div className='center'>
         <FontAwesomeIcon icon={faArrowAltCircleUp} className="arrowUp" transform="rotate--30"/>
-        <p>Search for a Gif above and your results will appear here when available.</p>
+        <p>Search for a GIF above and your results will appear here when available.</p>
       </div>
     </section>
   );
