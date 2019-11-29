@@ -9,7 +9,13 @@ import GifDisplay from '../GifDisplay/GifDisplay';
 import './CurrentGifDisplay.css';
 
 export default function CurrentGifDisplay({ gif, favorites, error, setError, addCurrentToFavorites }) {
+  
   function handleAddToFavorites() {
+    
+    const searchTermInFavorites = favorites.some(fav => {
+      return fav.gif.searchTerm === gif.searchTerm;
+    });
+    
     if(favorites.length >=5){
       setError({
         type: 'like',
@@ -20,8 +26,16 @@ export default function CurrentGifDisplay({ gif, favorites, error, setError, add
       setError({
         type: 'like',
         message: 'Sorry, we could not get this gif, try another term!'
-      })
-    }
+      }) } 
+      else if (searchTermInFavorites) {
+        setError({
+          type: 'like',
+          message:
+            'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the gif with this search term from favorites and try again'
+        });
+        return;
+      }
+    
     addCurrentToFavorites(gif);
   }
 
