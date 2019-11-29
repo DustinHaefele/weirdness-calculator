@@ -35,7 +35,9 @@ A few of the things you can do with Weirdness Calculator:
 * Start over again!
 
 <p align="center">
+  <kbd>
   <img src = "./screenShot.png" width=700>
+  </kbd>
 </p>
 
 ## Contributors
