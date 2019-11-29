@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Favorites from '../../components/Favorites/Favorites';
+import ResultsDisplay from '../../components/ResultsDisplay/ResultsDisplay';
 
 
 const mapStateToProps = state => ({
@@ -7,4 +7,4 @@ const mapStateToProps = state => ({
   error: state.error,
 })
 
-export default connect(mapStateToProps)(Favorites)
+export default connect(mapStateToProps)(ResultsDisplay)
