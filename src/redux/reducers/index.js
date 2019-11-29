@@ -6,5 +6,5 @@ import error from './error';
 export default combineReducers({
   favorites,
   currentGif,
-  error
+  error,
 });

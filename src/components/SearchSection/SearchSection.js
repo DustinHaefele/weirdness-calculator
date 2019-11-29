@@ -1,53 +1,90 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { batchActions } from 'redux-batched-actions';
-import { setCurrentGif, setError } from '../../redux/actions';
 import GiphyApiService from '../../services/giphy-api-service';
+import './SearchSection.css';
 
-const SearchSection = ({ favorites, error, dispatch }) => {
-  const history = useHistory();
+export default function SearchSection({
+  favorites,
+  error,
+  clearCurrent,
+  setError,
+  setCurrentGif
+}) {
+  function handleSearch(ev) {
+    ev.preventDefault();
+    clearCurrent();
+    const searchTerm = ev.target.search.value;
+    const searchTermInFavorites = favorites.some(fav => {
+      return fav.gif.searchTerm === searchTerm;
+    });
+    if (!searchTerm.trim()) {
+      setError({
+        type: 'search',
+        message: 'Please enter a search term'
+      });
+
+      return;
+    } else if (searchTermInFavorites) {
+      setError({
+        type: 'search',
+        message:
+          'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the gif with this search term from favorites and try again'
+      });
+
+      return;
+    }
+    return GiphyApiService.getGifFromSearch(searchTerm)
+      .then(gif => {
+        setCurrentGif(gif);
+      })
+      .catch(() =>
+        setError({
+          type: 'search',
+          message:
+            'Oops! Something went wrong.  Try Searching again.  If the problem persists refresh the page!'
+        })
+      );
+  }
 
   return (
-    <section>
+    <section className="searchSection">
       <p>
-        Find out how weird you are by selecting GIFs that make you laugh. We'll
-        show you the least weird ones to start but you can move the slider to
-        make them weirder.
+        Find out how weird you are by selecting your favorite gifs.
         <br />
         <br />
-        When you find a GIF you like press the "Like" button. When you have
-        found 5 that you like we'll show you how weird you are
+        Here’s how you do it.
       </p>
+      <ol>
+        <li>
+          Type anything (we mean anything) into the search box and we will come
+          up with related GIFS
+        </li>
+        <li>
+          View the GIFS we come up with (if you don’t like them you can either
+          move the slider to make them weirder, or come up with a new search
+          term)
+        </li>
+        <li>
+          Click “like me” for the ones you most enjoy (remember you can only
+          choose five!)
+        </li>
+        <li>
+          After you have selected five, we will show you just how weird you are.
+        </li>
+      </ol>
+      <p>Brace yourself, you’re about to see how much of a weirdo you are.</p>
 
-      <form
-        onSubmit={ev => {
-          ev.preventDefault();
-
-          const searchTerm = ev.target.search.value;
-          const searchTermInFavorites = favorites.some(fav => {
-            return fav.gif.searchTerm === searchTerm;
-          });
-          if (!searchTerm.trim()) {
-            dispatch(setError({type: 'search', message: 'Please enter a search term'}))
-            return;
-          } else if (searchTermInFavorites) {
-            dispatch(setError({type: 'search', message: 'You can only add one GIF to favorites for each search term.  Try searching another term, or remove the gif with this search term from favorites and try again'}))
-            return
-          }
-          return GiphyApiService.getGifFromSearch(searchTerm).then(gif => {
-            dispatch(batchActions([setCurrentGif(gif), setError({})]));
-            history.push('/gifs');
-          }).catch(() => dispatch(setError({type:'search', message: "Oops! Something went wrong.  Try Searching again.  If the problem persists refresh the page!"})))
-        }}
-      >
-        {error.type === 'search' && <p className='error'>{error.message}</p> }
-        <label htmlFor="search">Search Term: </label>
-        <input name="search" id="search" />
-        <button type="submit">Search</button>
+      <form onSubmit={ev => handleSearch(ev)} className="formDisplay">
+        {error.type === 'search' && <p className="error">{error.message}</p>}
+        <label htmlFor="search" className="searchLabel">
+          Search Term
+        </label>
+        <div className="searchDiv">
+          <input name="search" id="search" className="formElement" />
+          <button type="submit" className="formElement">
+            Search
+          </button>
+        </div>
       </form>
     </section>
   );
-};
-
-export default connect()(SearchSection);
+}

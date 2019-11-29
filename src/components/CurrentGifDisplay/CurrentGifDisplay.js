@@ -1,30 +1,50 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { batchActions } from 'redux-batched-actions';
-import { addToFavorites, setCurrentGif } from '../../redux/actions';
-import WeirdnessSlider from '../Slider/Slider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faThumbsUp,
+  faArrowAltCircleUp
+} from '@fortawesome/free-solid-svg-icons';
+import SliderContainer from '../../containers/SliderContainer/SliderContainer';
 import GifDisplay from '../GifDisplay/GifDisplay';
+import './CurrentGifDisplay.css';
 
-const CurrentGifDisplay = ({ gif, error, dispatch }) => {
+export default function CurrentGifDisplay({ gif, favorites, error, setError, addCurrentToFavorites }) {
+  function handleAddToFavorites() {
+    if(favorites.length >=5){
+      setError({
+        type: 'like',
+        message: 'You can only add 5 Gifs to your favorites.  To add this Gif to favorites you must remove one first.'
+      })
+      return;
+    } else if (!gif.images.fixed_width.url) {
+      setError({
+        type: 'like',
+        message: 'Sorry, we could not get this gif, try another term!'
+      })
+    }
+    addCurrentToFavorites(gif);
+  }
+
   return gif.images ? (
-    <div className="currentGifDisplay">
-      <h2>YOUR SEARCH RESULTS</h2>
-      <GifDisplay gif={gif} />
-      <button
-        onClick={() => {
-          dispatch(batchActions([addToFavorites(gif), setCurrentGif({})]));
-        }}
-      >
-        LIKE ME
+    <section className="currentGifSection">
+      <h2 className="sectionTitle">YOUR SEARCH RESULTS</h2>
+      <div className="currentGifDisplay center">
+        <GifDisplay gif={gif} isFavorite={false}/>
+      </div>
+      {error.type === 'like' && <p className="error">{error.message}</p>}
+      <button className="likeButton button" onClick={() => handleAddToFavorites()}>
+        <FontAwesomeIcon icon={faThumbsUp} className="thumbsUp" />
       </button>
-      <WeirdnessSlider searchTerm={gif.searchTerm} error={error} />
-    </div>
+      <SliderContainer />
+    </section>
   ) : (
-    <div className="currentGifDisplay">
-      <h2>YOUR SEARCH RESULTS</h2>
-      <p>Your search results will appear here when they are available</p>
-    </div>
+    <section className="currentGifSection">
+      <h2 className="sectionTitle">YOUR SEARCH RESULTS</h2>
+      <div className='center'>
+        <FontAwesomeIcon icon={faArrowAltCircleUp} className="arrowUp" transform="rotate--30"/>
+        <p>Search for a Gif above and your results will appear here when available.</p>
+      </div>
+    </section>
   );
 };
 
-export default connect()(CurrentGifDisplay);

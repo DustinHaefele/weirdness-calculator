@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -33,17 +37,50 @@
 .column {
   display: flex;
   flex-direction: column;
-  align-content: space-around;
+  justify-content: flex-start;
+
+}
+
+._45 {
+  justify-content: center;
+  width: 45%;
+  /* margin: 0 0 15px 0; */
+}
+
+.around {
+  text-align: center;
   justify-content: space-around;
 }
 
-._50 {
-  justify-content: center;
-  width: 40%;
-  margin: 0 0 15px 0;
+._55 {
+  width: 55%;
+}
+
+._100 {
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.button {
+  font-size: 25px;
+  color: white;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  background-color: gray;
+  padding: 5px 30px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .error {
   color: red;
   font-size: 14px;
+  text-align: center;
+  font-weight: bold;
 }
+
+img{ display: block}
