@@ -44,12 +44,12 @@ Just me - Dustin Haefele
 ## Build Process
 
 - Clone or download the repo
-- Register for a Giphy developer account or login by going [Here](https://developers.giphy.com/) and clicking 'Get Started'
+- Register for a Giphy developer account or login by going to [https://developers.giphy.com/](https://developers.giphy.com/) and clicking 'Get Started'
 - Select 'Create an App', insert the information and select I only want to use the Giphy API and submit the form.
 - Copy the example.env file to a .env file and set the 'REACT_APP_GIPHY_API_KEY' to the key that you just recieved from Giphy and save the file.
 - Run `npm install` from your terminal to install dependencies
 - Run `npm start` to start the app.
-- Navigate to the local host port that your terminal specifies for me its: [localhost:3000](http://localhost:3000) to see the app in action.
+- To see the app in action navigate to the local host port that your terminal specifies for me its [localhost:3000](http://localhost:3000).
 
 
 ## Acknowledgments
