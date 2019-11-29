@@ -1,6 +1,5 @@
 import React from 'react';
-import { batchActions } from 'redux-batched-actions';
-import { setError, setIsCalc } from '../../redux/actions';
+import { setError } from '../../redux/actions';
 import { useHistory } from 'react-router';
 import GifDisplay from '../GifDisplay/GifDisplay';
 import './Favorites.css';
@@ -18,7 +17,7 @@ export default function Favorites({ favorites, error, dispatch }) {
 
   function calculateWeirdness() {
     if (favorites.length >= 5) {
-      dispatch(batchActions([setError({}), setIsCalc(true)]));
+      dispatch(setError({}));
       history.push('/results');
       return;
     }
