@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { batchActions } from 'redux-batched-actions';
+import { setCurrentGif, setError } from '../../redux/actions';
 import SearchSection from '../../components/SearchSection/SearchSection';
 
 const mapStateToProps = state => ({
@@ -6,4 +8,11 @@ const mapStateToProps = state => ({
   error: state.error
 })
 
-export default connect(mapStateToProps)(SearchSection)
+const mapDispatchtoProps = dispatch => ({
+  clearCurrent: () => dispatch(setCurrentGif({})),
+  setError: error => dispatch(setError(error)),
+  setCurrentGif: gif => dispatch(batchActions([setCurrentGif(gif), setError({})])),
+
+})
+
+export default connect(mapStateToProps, mapDispatchtoProps)(SearchSection)
