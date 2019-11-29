@@ -85,7 +85,7 @@ export default function WeirdnessSlider ({ gif, favorites, error, setCurrentGif,
         if (newGif.id === gif.id) {
           setError({
             type: 'slider',
-            message: "Oops, we grabbed the same GIF!  Try a different weirdness.  If this problem persists we probably don't have a lot of GIFs that match your term so you may want to search something else"
+            message: "Oops, we grabbed the same GIF!  Try a different weirdness.  If this problem persists we probably don't have a lot of GIFs that match your search term so you may want to search something else"
           })
           return;
         }
