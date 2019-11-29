@@ -19,7 +19,4 @@ export const setError = error => ({
   error
 });
 
-export const setIsCalc = isCalc => ({
-  type: 'SET_IS_CALC',
-  isCalc
-});
+
