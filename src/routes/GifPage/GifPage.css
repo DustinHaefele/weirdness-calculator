@@ -1,8 +1,8 @@
 .likedSection {
   padding: 20px;
   text-align: left;
-  border: .75px solid lightgray;
-  background-color: #EFEFEF;
+  border: 0.75px solid lightgray;
+  background-color: #efefef;
 }
 
 .vh {
@@ -11,4 +11,14 @@
 
 .sectionTitle {
   margin: 15px 15px;
+}
+
+@media screen and (max-width: 481px) {
+  .columnDisplay {
+    width: 100%;
+    /* flex-wrap: wrap; */
+  }
+  .sectionTitle {
+    font-size: 20px;
+  }
 }

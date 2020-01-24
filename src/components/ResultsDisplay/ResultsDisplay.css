@@ -12,3 +12,11 @@
   margin-bottom: 80px;
 }
 
+@media screen and (max-width: 481px) {
+  .restartButton {
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 40px;
+  }
+}
+

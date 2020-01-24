@@ -12,3 +12,10 @@
 .headerTitle {
   margin: 7px 0;
 }
+
+@media screen and (max-width: 481px) {
+  .headerTitle {
+    font-size: 28px;
+    margin: 9px 0;
+  }
+}

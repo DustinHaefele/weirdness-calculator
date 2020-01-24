@@ -23,6 +23,7 @@
 }
 
 .formElement {
+  border: .5px solid gray;
   font-size: 16px;
   padding: 8px 15px;
 }
@@ -31,4 +32,11 @@
   display: block;
   font-size: 14px;
   margin: 5px 15px;
+}
+
+@media screen and (max-width: 481px) {
+  .formElement {
+    border: .5px solid gray;
+    margin: 0 2px;
+}
 }

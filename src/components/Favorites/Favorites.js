@@ -9,7 +9,7 @@ export default function Favorites({ favorites, error, setError, handleRemove }) 
 
   function displayFavorites() {
     return favorites.map(f => (
-      <div key={f.id} className="_45 gifDisplay around">
+      <div key={f.id} className="_45 gifDisplay around columnDisplay">
         <GifDisplay gif={f.gif} handleRemove={handleRemove} isFavorite={true} />
       </div>
     ));

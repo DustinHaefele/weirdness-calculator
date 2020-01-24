@@ -9,11 +9,11 @@ export default function GifPage() {
   return (
     <div className="row">
 
-        <div className="_55 vh column">
+        <div className="_55 vh column columnDisplay">
           <SearchContainer />
           <CurrentGif />
         </div>
-        <div className="likedSection _45 vh">
+        <div className="likedSection _45 vh columnDisplay">
           <h2 className='sectionTitle'>YOUR LIKED GIFS</h2>
           <FavoriteGifs />
         </div>
